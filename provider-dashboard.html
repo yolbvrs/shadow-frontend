@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Welcome, Security Provider</h1>
+    <p id="providerName"></p>
+    <h2>Your Profile</h2>
+    <p><strong>Experience:</strong> <span id="providerExperience"></span></p>
+    <p><strong>Specialties:</strong> <span id="providerSpecialties"></span></p>
+    
+    <h2>Available Job Requests</h2>
+    <div id="jobRequests">
+        <p>Loading jobs...</p>
+    </div>
+
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Fetch provider details
+            const response = await fetch("https://shadow-backend-5xom.onrender.com/api/auth/user", {
+                method: "GET",
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+
+            const userData = await response.json();
+            document.getElementById("providerName").innerText = `Hello, ${userData.name}`;
+            document.getElementById("providerExperience").innerText = userData.experience || "Not Provided";
+            document.getElementById("providerSpecialties").innerText = userData.specialties || "Not Provided";
+
+            // Fetch job requests (Mocked for now)
+            document.getElementById("jobRequests").innerHTML = `
+                <div>
+                    <p><strong>Client:</strong> John Doe</p>
+                    <p><strong>Location:</strong> New York</p>
+                    <p><strong>Job Type:</strong> VIP Protection</p>
+                    <button>Accept Job</button>
+                </div>
+            `;
+        });
+
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

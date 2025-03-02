@@ -26,9 +26,32 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         document.getElementById('loginMessage').innerText = data.msg;
 
         if (response.ok) {
-            alert("Login successful! Redirecting to homepage...");
-            window.location.href = "index.html"; // Redirect to homepage after login
+    alert("Login successful! Redirecting...");
+
+    localStorage.setItem('token', data.token); // Save user session
+
+    // Fetch user role from backend and redirect accordingly
+    fetch('https://shadow-backend-5xom.onrender.com/api/auth/user', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${data.token}`
         }
+    })
+    .then(response => response.json())
+    .then(userData => {
+        if (userData.role === "provider") {
+            window.location.href = "provider-dashboard.html"; // Redirect provider
+        } else {
+            window.location.href = "customer-dashboard.html"; // Redirect customer
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching user role:", error);
+        alert("Login failed. Please try again.");
+    });
+} else {
+    alert("Login failed! Please try again.");
+}
     } catch (error) {
         document.getElementById('loginMessage').innerText = "Error logging in.";
     }
