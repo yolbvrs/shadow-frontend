@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         providers.forEach(provider => {
             const div = document.createElement("div");
-            div.className = "provider-card"; // Add CSS class for styling
+            div.className = "provider-card";
             div.innerHTML = `
                 <h3>${provider.name}</h3>
                 <p><strong>Experience:</strong> ${provider.experience}</p>
@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// Function to Handle Hiring a Provider
+// ✅ Function must be declared BEFORE buttons try to use it
 function hireProvider(providerId) {
     alert("Hiring request sent to provider ID: " + providerId);
-    // Future: Implement actual backend request for hiring
 }
