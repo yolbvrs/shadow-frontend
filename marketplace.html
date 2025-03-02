@@ -1,32 +1,51 @@
-async function hireProvider(providerId) {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        alert("Please log in to hire a provider.");
-        window.location.href = "login.html";
-        return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - Security Providers</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Find a Security Provider</h1>
+    
+    <div id="providerList">
+        <p>Loading providers...</p>
+    </div>
+
+    <script>
+    async function hireProvider(providerId) {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Please log in to hire a provider.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const jobDetails = prompt("Enter job details (e.g., location, time, job type):");
+        if (!jobDetails) return;
+
+        try {
+            const response = await fetch("https://shadow-backend-5xom.onrender.com/api/jobs/request", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    customerId: localStorage.getItem("userId"), // ✅ Ensure this is set when logging in
+                    providerId,
+                    jobDetails
+                })
+            });
+
+            const data = await response.json();
+            alert(data.msg);
+        } catch (error) {
+            console.error("Error sending job request:", error);
+            alert("Failed to send job request.");
+        }
     }
-
-    const jobDetails = prompt("Enter job details (e.g., location, time, job type):");
-    if (!jobDetails) return;
-
-    try {
-        const response = await fetch("https://shadow-backend-5xom.onrender.com/api/jobs/request", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                customerId: localStorage.getItem("userId"), // ✅ Ensure this is set when logging in
-                providerId,
-                jobDetails
-            })
-        });
-
-        const data = await response.json();
-        alert(data.msg);
-    } catch (error) {
-        console.error("Error sending job request:", error);
-        alert("Failed to send job request.");
-    }
-}
+<script src="js/script.js"></script>
+</body>
+</html>
