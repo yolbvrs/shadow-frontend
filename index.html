@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHADOW - Security Platform</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .nav-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: black;
+            transition: 0.3s ease;
+        }
+        .nav-toggle:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transform: scale(1.2);
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #000;
+            padding-top: 60px;
+            transition: right 0.3s ease;
+            text-align: left;
+        }
+        .navbar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2rem;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .logo {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 8px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .btn-signup {
+            background-color: #000;
+            color: #fff;
+        }
+        .btn-signup:hover {
+            background-color: #333;
+        }
+        .btn-login {
+            background-color: #ccc;
+            color: #000;
+        }
+        .btn-login:hover {
+            background-color: #999;
+        }
+    </style>
+    <script>
+        function toggleNav() {
+            let navbar = document.querySelector('.navbar');
+            if (navbar.style.right === "0px") {
+                navbar.style.right = "-250px";
+            } else {
+                navbar.style.right = "0px";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="nav-toggle" onclick="toggleNav()">🌟</div>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="logo">SHADOW</div>
+    <div class="buttons">
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        <a href="login.html" class="btn btn-login">Login</a>
+    </div>
+</body>
+</html>
