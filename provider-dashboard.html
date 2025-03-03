@@ -17,9 +17,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("providerName").innerText = `Hello, ${userData.name}`;
 
+    console.log("Provider ID:", userData._id); // ✅ Debugging line
+
     // ✅ Fetch job requests for the provider
     const jobResponse = await fetch(`https://shadow-backend-5xom.onrender.com/api/jobs/provider/${userData._id}`);
     const jobs = await jobResponse.json();
+
+    console.log("Jobs received:", jobs); // ✅ Debugging line
 
     const jobList = document.getElementById("jobRequests");
     jobList.innerHTML = "";
@@ -29,8 +33,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         div.innerHTML = `
             <p><strong>Job Details:</strong> ${job.jobDetails}</p>
             <p><strong>Customer:</strong> ${job.customerId.name} (${job.customerId.email})</p>
-            <p><strong>Status:</strong> ${job.status}</p>
-            <button onclick="acceptJob('${job._id}')">Accept Job</button>
+            <p><strong>Status:</strong> <span id="job-status-${job._id}">${job.status}</span></p>
+            <button onclick="updateJobStatus('${job._id}', 'Accepted')">Accept</button>
+            <button onclick="updateJobStatus('${job._id}', 'Rejected')">Reject</button>
         `;
         jobList.appendChild(div);
     });
