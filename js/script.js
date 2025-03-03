@@ -1,4 +1,4 @@
-async function updateJobStatus(jobId, status) {
+window.updateJobStatus = async function(jobId, status) {
     const token = localStorage.getItem("token");
     if (!token) {
         alert("Please log in first.");
@@ -25,6 +25,4 @@ async function updateJobStatus(jobId, status) {
         console.error("Error updating job status:", error);
         alert("Failed to update job status.");
     }
-}
-// ✅ Ensure this function is globally available
-window.hireProvider = hireProvider;
+};
