@@ -1,47 +1,59 @@
-<form id="signupForm">
-    <input type="text" id="name" name="name" placeholder="Full Name" required>
-    <input type="email" id="email" name="email" placeholder="Email" required>
-    <input type="password" id="password" name="password" placeholder="Password" required>
-    <select id="role" name="role">
-        <option value="customer">Customer</option>
-        <option value="provider">Security Provider</option>
-    </select>
-    <input type="text" id="experience" name="experience" placeholder="Experience (Only for Providers)">
-    <input type="text" id="specialties" name="specialties" placeholder="Specialties (Only for Providers)">
-    <button type="submit">Sign Up</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Sign-Up | SHADOW</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Join SHADOW as a Security Provider</h1>
+        <p>Connect with clients and grow your security business.</p>
 
-<p id="signupMessage"></p> <!-- Message area -->
+        <form id="signupForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
 
-<script>
-document.getElementById('signupForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
 
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        role: document.getElementById('role').value,
-        experience: document.getElementById('experience').value,
-        specialties: document.getElementById('specialties').value
-    };
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-    try {
-        const response = await fetch('https://shadow-backend-5xom.onrender.com/api/auth/signup', {  // Change this to Render URL after deployment
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
+            <label for="experience">Years of Experience:</label>
+            <select id="experience" name="experience" required>
+                <option value="">Select Experience Level</option>
+                <option value="1-2 years">1-2 years</option>
+                <option value="3-5 years">3-5 years</option>
+                <option value="6+ years">6+ years</option>
+            </select>
 
-        const data = await response.json();
-        document.getElementById('signupMessage').innerText = data.msg;
+            <label for="specialties">Specialties:</label>
+            <select id="specialties" name="specialties" required>
+                <option value="">Choose Specialization</option>
+                <option value="VIP Protection">VIP Protection</option>
+                <option value="Event Security">Event Security</option>
+                <option value="Surveillance">Surveillance</option>
+                <option value="Patrol Services">Patrol Services</option>
+                <option value="Other">Other</option>
+            </select>
 
-        if (response.ok) {
-            alert("Sign-up successful! Redirecting to login...");
-            window.location.href = "login.html"; // Redirect to login page after signup
-        }
-    } catch (error) {
-        document.getElementById('signupMessage').innerText = "Error signing up.";
-    }
-});
-</script>
+            <label for="idNumber">IC / License Number:</label>
+            <input type="text" id="idNumber" name="idNumber" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script src="js/signup.js"></script>
+</body>
+</html>
