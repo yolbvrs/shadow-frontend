@@ -22,8 +22,7 @@ document.getElementById("signupForm").addEventListener("submit", async (event) =
         const response = await fetch("https://shadow-backend-5xom.onrender.com/api/auth/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ 
-                name, email, phone, experience, specialties, idNumber, password, role: "provider" 
+            body: JSON.stringify({name, email, phone, experience, specialties, idNumber, password, role: "provider" 
             })
         });
 
