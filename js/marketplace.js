@@ -1,3 +1,5 @@
+console.log("✅ Marketplace.js is loaded!");
+
 document.addEventListener("DOMContentLoaded", async () => {
     const providerList = document.getElementById("providerList");
 
