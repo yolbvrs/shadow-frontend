@@ -56,3 +56,28 @@ button:hover {
         max-width: 350px; /* ✅ Keeps the form from feeling too big */
     }
 }
+
+.provider-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.provider-card h3 {
+    margin: 0;
+}
+
+button {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #444;
+}
