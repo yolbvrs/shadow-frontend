@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHADOW Security Network</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>SHADOW Security Network</h1>
+    <p>Post security work opportunities or apply for existing jobs.</p>
+
+    <!-- ✅ Job Posting Form -->
+    <form id="jobPostForm">
+        <label for="title">Job Title:</label>
+        <input type="text" id="title" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" required>
+
+        <label for="description">Job Description:</label>
+        <textarea id="description" rows="4" required></textarea>
+
+        <label for="requirements">Required Skills / Experience:</label>
+        <input type="text" id="requirements" required>
+
+        <label for="rate">Contact Details:</label>
+        <input type="text" id="rate" required>
+
+        <button type="submit">Post Job</button>
+    </form>
+
+    <h2>Available Security Jobs</h2>
+    <div id="jobList">
+        <p>Loading jobs...</p>
+    </div>
+
+    <script src="js/network.js"></script>
+</body>
+</html>
