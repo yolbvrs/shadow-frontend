@@ -13,6 +13,7 @@
         <form id="accessForm">
             <input type="password" id="accessCode" placeholder="Enter Access Code" required>
             <button type="submit">Enter</button>
+            <p id="error-message" class="error-text"></p>
         </form>
     </div>
 
@@ -20,10 +21,12 @@
         document.getElementById("accessForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const accessCode = document.getElementById("accessCode").value;
-            if (accessCode === "shadow123") { // ✅ Change for real authentication
-                window.location.href = "network.html"; // ✅ Redirect to network page
+
+            if (accessCode === "555") { 
+                window.location.href = "network.html"; // ✅ Redirect to the Network page
             } else {
-                alert("Access Denied");
+                document.getElementById("error-message").innerText = "Access Denied.";
+                document.getElementById("error-message").style.color = "red";
             }
         });
     </script>

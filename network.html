@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHADOW-CONFIDENTIAL Network</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <h1 class="terminal-title">ACCESS GRANTED: SHADOW-CONFIDENTIAL</h1>
+        <p class="terminal-subtitle">Encryption Level: Classified ██ ███ █████</p>
+
+        <div class="data-stream">
+            <p>Loading network protocols...</p>
+            <p>Decrypting data files...</p>
+            <p>█ Accessing Secure Channels ████████</p>
+            <p>█ Verifying user identity ████████</p>
+            <p>█ Connection stabilized ██ ███ ██████</p>
+        </div>
+
+        <div class="command-interface">
+            <label>Enter Command:</label>
+            <input type="text" id="commandInput" placeholder="Type 'list' to view active contracts..." autofocus>
+            <button onclick="executeCommand()">Run</button>
+        </div>
+
+        <div id="commandOutput"></div>
+    </div>
+
+    <script>
+        function executeCommand() {
+            let command = document.getElementById("commandInput").value.toLowerCase();
+            let outputDiv = document.getElementById("commandOutput");
+
+            if (command === "list") {
+                outputDiv.innerHTML = `
+                    <p>Retrieving active contracts...</p>
+                    <p>███ CONTRACT ID: #SH-3421 ██ STATUS: Open ██</p>
+                    <p>███ CONTRACT ID: #SH-6783 ██ STATUS: In Progress ██</p>
+                    <p>███ CONTRACT ID: #SH-9854 ██ STATUS: Completed ██</p>
+                `;
+            } else {
+                outputDiv.innerHTML = `<p>Unknown command. Type 'list' to view available contracts.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
