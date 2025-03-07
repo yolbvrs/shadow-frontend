@@ -7,32 +7,43 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>SHADOW Security Network</h1>
-    <p>Post security work opportunities or apply for existing jobs.</p>
+    <div class="container">
+        <!-- Sidebar for Filters (Like Reddit's left panel) -->
+        <aside class="sidebar">
+            <h3>Filters</h3>
+            <label for="search">Search Jobs:</label>
+            <input type="text" id="search" placeholder="Enter keyword...">
+            <button onclick="filterJobs()">Apply Filters</button>
+        </aside>
 
-    <!-- ✅ Job Posting Form -->
-    <form id="jobPostForm">
-        <label for="title">Job Title:</label>
-        <input type="text" id="title" required>
+        <!-- Main Content (Job Listings like Excel but cleaner) -->
+        <section class="main-content">
+            <h1>SHADOW Security Network</h1>
+            <p>Browse available security jobs and apply instantly.</p>
 
-        <label for="location">Location:</label>
-        <input type="text" id="location" required>
+            <table id="jobTable">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Location</th>
+                        <th>Rate</th>
+                        <th>Details</th>
+                        <th>Apply</th>
+                    </tr>
+                </thead>
+                <tbody id="jobList">
+                    <tr><td colspan="5">Loading jobs...</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-        <label for="description">Job Description:</label>
-        <textarea id="description" rows="4" required></textarea>
-
-        <label for="requirements">Required Skills / Experience:</label>
-        <input type="text" id="requirements" required>
-
-        <label for="rate">Contact Details:</label>
-        <input type="text" id="rate" required>
-
-        <button type="submit">Post Job</button>
-    </form>
-
-    <h2>Available Security Jobs</h2>
-    <div id="jobList">
-        <p>Loading jobs...</p>
+        <!-- Optional Right Panel (Trending Jobs, Notifications) -->
+        <aside class="sidebar right-sidebar">
+            <h3>Top Rated Providers</h3>
+            <ul id="topProviders">
+                <li>Loading...</li>
+            </ul>
+        </aside>
     </div>
 
     <script src="js/network.js"></script>
