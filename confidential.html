@@ -11,8 +11,8 @@
         <h1 class="shadow-title">SHADOW</h1>
 
         <form id="accessForm">
-            <input type="password" id="accessCode" placeholder="CODE" required>
-            <button type="submit">enter</button>
+            <input type="password" id="accessCode" placeholder="Enter Access Code" required>
+            <button type="submit">Enter</button>
         </form>
     </div>
 
@@ -20,7 +20,7 @@
         document.getElementById("accessForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const accessCode = document.getElementById("accessCode").value;
-            if (accessCode === "shadow123") { // ✅ Change this for real authentication
+            if (accessCode === "shadow123") { // ✅ Change for real authentication
                 window.location.href = "network.html"; // ✅ Redirect to network page
             } else {
                 alert("Access Denied");
