@@ -59,5 +59,30 @@
         </div>
         <a href="index.html"><button class="btn">Back to Home</button></a>
     </div>
+ function toggleNav() {
+            let navbar = document.querySelector('.navbar');
+            if (navbar.style.right === "0px") {
+                navbar.style.right = "-250px";
+            } else {
+                navbar.style.right = "0px";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="nav-toggle" onclick="toggleNav()">🌟</div>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="contact.html">Contact</a>
+	<a href="network.html">Network</a>
+    </div>
+    <div class="logo">SHADOW</div>
+    <div class="buttons">
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+        <a href="login.html" class="btn btn-login">Login</a>
+    </div>
+
 </body>
 </html>
